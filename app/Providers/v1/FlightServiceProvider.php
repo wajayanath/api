@@ -20,6 +20,7 @@ class FlightServiceProvider extends ServiceProvider
                 return $value == 'ontime' || $value == 'delayed';
         });
     }
+    
     /**
      * Register the application services.
      *
