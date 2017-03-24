@@ -7,7 +7,11 @@ use App\Flight;
 class FlightService {
    
     public function getFlights() {
-        return $this->filterFlights(Flight::all());
+            return $this->filterFlights(Flight::all());
+    }
+
+    public function setFlights($flightnumber){
+        return $this->filterFlights(Flight::where('flightNumber', $flightnumber)->get());
     }
 
     protected function filterFlights($flights) {
@@ -19,6 +23,7 @@ class FlightService {
             $entry = [
                 'flightNumber' => $flight->flightnumber,
                 'status' => $flight->status,
+                'href' => route('flights.show', ['id' => $flight->flightnumber])
             ];
 
             $data[] = $entry;

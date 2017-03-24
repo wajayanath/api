@@ -26,6 +26,7 @@ class FlightController extends Controller
     {
         //call service
         //return data
+        $parameters = request()->input();
         $data = $this->flights->getFlights();
         return response()->json($data);
     }
@@ -59,7 +60,8 @@ class FlightController extends Controller
      */
     public function show($id)
     {
-        //
+         $data = $this->flights->setFlights($id);
+        return response()->json($data);
     }
 
     /**
